@@ -1,0 +1,153 @@
+========== 명령어 ==========
+sudo docker build -t my-web-image .
+
+========== 출력결과 ==========
+[+] Building 2.2s (8/8) FINISHED                                                              docker:default
+ => [internal] load build definition from Dockerfile                                                    0.0s
+ => => transferring dockerfile: 128B                                                                    0.0s
+ => [internal] load metadata for docker.io/library/nginx:latest                                         1.6s
+ => [internal] load .dockerignore                                                                       0.0s
+ => => transferring context: 2B                                                                         0.0s
+ => [internal] load build context                                                                       0.0s
+ => => transferring context: 95B                                                                        0.0s
+ => [1/3] FROM docker.io/library/nginx:latest@sha256:8541484afbc9c8a5a8a99b379568ebbc957f658583ec9448f  0.1s
+ => => resolve docker.io/library/nginx:latest@sha256:8541484afbc9c8a5a8a99b379568ebbc957f658583ec9448f  0.0s
+ => CACHED [2/3] COPY ./html /usr/share/nginx/html                                                      0.0s
+ => CACHED [3/3] RUN chmod -R 755 /usr/share/nginx/html                                                 0.0s
+ => exporting to image                                                                                  0.2s
+ => => exporting layers                                                                                 0.0s
+ => => exporting manifest sha256:353358275be09329121ced956f04e709e931b053415ae31e8bd3de2ad74d2e1c       0.0s
+ => => exporting config sha256:ab3d10e3581a69e0b06a4767e27ea5a23f75956af6628d1faec04f5421fe0bba         0.0s
+ => => exporting attestation manifest sha256:214091146f235ef54f514d54f5584fc3dd0578bc400e2f6ad71c4b62e  0.0s
+ => => exporting manifest list sha256:e01296065c97e2234b0135ceab6294ca6dc89dae4969acff08f5331bb94b7845  0.0s
+ => => naming to docker.io/library/my-web-image:latest                                                  0.0s
+ => => unpacking to docker.io/library/my-web-image:latest                                               0.1s
+
+========== 명령어 ==========
+$ sudo docker images
+
+========== 출력결과 ==========
+                                                                                         i Info →   U  In Use
+IMAGE                 ID             DISK USAGE   CONTENT SIZE   EXTRA
+my-web-image:latest   e01296065c97        238MB         63.1MB        
+
+========== 명령어 ==========
+$ sudo docker run -d -p 8080:80 -v ~/Downloads/html:/usr/share/nginx/html --name my-web-container my-web-image
+
+========== 출력결과 ==========
+63f41e1c14d6ef09b85063d947fc385af9f6a86ebf33310964ce36d2c7cc5a38
+
+========== 명령어 ==========
+$ curl http://localhost:8080
+
+========== 출력결과 ==========
+</html><!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Docker Chat Test</title>
+    <style>
+        body { font-family: sans-serif; margin: 50px; }
+        #chat-box { width: 400px; height: 300px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; margin-bottom: 10px; }
+        .message { margin-bottom: 8px; }
+        .user { text-align: right; color: blue; }
+        .bot { text-align: left; color: green; }
+    </style>
+</head>
+<body>
+
+    <h2>최대한의 웹 웹사이트</h2>
+    <div id="chat-box"></div>
+    
+    <input type="text" id="user-input" placeholder="메시지를 입력하세요..." style="width: 300px;">
+    <button onclick="sendMessage()">전송</button>
+
+    <!-- 자바스크립트 파일 연결 -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+========== 명령어 ==========
+$ sudo docker ps -a
+
+========== 출력결과 ==========
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+63f41e1c14d6   my-web-image   "/docker-entrypoint.…"   17 minutes ago   Up 17 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-web-container
+
+========== 명령어 ==========
+$ sudo docker rm -f my-web-container
+
+========== 출력결과 ==========
+my-web-container
+
+========== 명령어 ==========
+$ sudo docker ps -a
+
+========== 출력결과 ==========
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+========== 명령어 ==========
+$ cat index.html
+
+========== 출력결과 ==========
+</html><!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Docker Chat Test</title>
+    <style>
+        body { font-family: sans-serif; margin: 50px; }
+        #chat-box { width: 400px; height: 300px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; margin-bottom: 10px; }
+        .message { margin-bottom: 8px; }
+        .user { text-align: right; color: blue; }
+        .bot { text-align: left; color: green; }
+    </style>
+</head>
+<body>
+
+    <h2>최소한의 기능  웹 웹사이트</h2>
+    <div id="chat-box"></div>
+    
+    <input type="text" id="user-input" placeholder="메시지를 입력하세요..." style="width: 300px;">
+    <button onclick="sendMessage()">전송</button>
+
+    <!-- 자바스크립트 파일 연결 -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+========== 명령어 ==========
+$ cat script.js
+
+========== 출력결과 ==========
+function sendMessage() {
+    const inputField = document.getElementById("user-input");
+    const chatBox = document.getElementById("chat-box");
+    const userText = inputField.value.trim();
+
+    // 입력창이 비어있으면 무시
+    if (userText === "") return;
+
+    // 1. 사용자가 보낸 메시지를 화면에 추가
+    const userMessage = document.createElement("div");
+    userMessage.className = "message user";
+    userMessage.innerText = "나: " + userText;
+    chatBox.appendChild(userMessage);
+
+    // 입력창 초기화
+    inputField.value = "";
+
+    // 스크롤을 맨 아래로 내리기
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    // 2. 1초 뒤에 시스템(봇)이 응답하는 상호작용 구현
+    setTimeout(() => {
+        const botMessage = document.createElement("div");
+        botMessage.className = "message bot";
+        botMessage.innerText = "상대방: '" + userText + "' 라고 말씀하셨군요!";
+        chatBox.appendChild(botMessage);
+        
+        // 스크롤 내리기
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }, 1000);
+}

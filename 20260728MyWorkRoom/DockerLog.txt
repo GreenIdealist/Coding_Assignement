@@ -1,0 +1,475 @@
+========== 명 령 어 ==========
+$ sudo docker info
+
+========== 입 력 결 과 ==========
+Client: Docker Engine - Community
+ Version:    29.6.2
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  buildx: Docker Buildx (Docker Inc.)
+    Version:  v0.35.0
+    Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+  compose: Docker Compose (Docker Inc.)
+    Version:  v5.3.1
+    Path:     /usr/libexec/docker/cli-plugins/docker-compose
+
+Server:
+ Containers: 2
+  Running: 0
+  Paused: 0
+  Stopped: 2
+ Images: 1
+ Server Version: 29.6.2
+ Storage Driver: overlayfs
+  driver-type: io.containerd.snapshotter.v1
+ Logging Driver: json-file
+ Cgroup Driver: systemd
+ Cgroup Version: 2
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+ CDI spec directories:
+  /etc/cdi
+  /var/run/cdi
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 11ce9d5f3c68c941867e82890e93e815c1304f1b
+ runc version: v1.3.6-0-g491b69ba
+ init version: de40ad0
+ Security Options:
+  apparmor
+  seccomp
+   Profile: builtin
+  cgroupns
+ Kernel Version: 7.0.0-28-generic
+ Operating System: Ubuntu 26.04 LTS
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 2
+ Total Memory: 3.319GiB
+ Name: VirtualBoxDocker
+ ID: 4fc08769-a21e-4879-a9ac-ebe9c14491df
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ Experimental: false
+ Insecure Registries:
+  ::1/128
+  127.0.0.0/8
+ Live Restore Enabled: false
+ Firewall Backend: iptables
+  EnableUserlandProxy: true
+  UserlandProxyPath: /usr/bin/docker-proxy
+
+========== 명 령 어 ==========
+$ sudo docker run hello-world
+
+========== 입 력 결 과 ==========
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+========== 명 령 어 ==========
+$ sudo docker build .
+
+========== 입 력 결 과 ==========
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2B done
+#1 DONE 0.0s
+ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+
+========== 명 령 어 ==========
+$ docker --version
+
+========== 입 력 결 과 ==========
+Docker version 29.6.2, build dfc4efb
+
+========== 명 령 어 ==========
+$ sudo docker images
+
+========== 입 력 결 과 ==========
+IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest   c3cbe1cc1aa5       25.9kB         9.49kB   U    
+ubuntu:latest        3131b4cc82a7        161MB         45.3MB   U    
+
+========== 명 령 어 ==========
+$ sudo docker ps -a
+
+========== 입 력 결 과 ==========
+CONTAINER ID   IMAGE         COMMAND       CREATED             STATUS                         PORTS     NAMES
+86cc27b94b25   hello-world   "/hello"      56 minutes ago      Exited (0) 56 minutes ago                quizzical_fermi
+e1742343cd03   hello-world   "/hello"      57 minutes ago      Exited (0) 57 minutes ago                sweet_shockley
+0149bbb92456   ubuntu        "/bin/bash"   59 minutes ago      Exited (0) 59 minutes ago                hungry_burnell
+2c92b2f677a1   ubuntu        "/bin/bash"   About an hour ago   Exited (0) About an hour ago             stupefied_goldberg
+70fa76640036   hello-world   "/hello"      About an hour ago   Exited (0) About an hour ago             admiring_hamilton
+8d6d6b3fe239   ubuntu        "/bin/bash"   About an hour ago   Exited (0) About an hour ago             interesting_mirzakhani
+b4b8324082c5   hello-world   "/hello"      23 hours ago        Exited (0) 23 hours ago                  cranky_mclaren
+c37f0e1557a0   hello-world   "/hello"      23 hours ago        Exited (0) 23 hours ago                  vibrant_feynman
+
+========== 명 령 어 ==========
+$ sudo docker container prune
+
+========== 입 력 결 과 ==========
+WARNING! This will remove all stopped containers.
+Are you sure you want to continue? [y/N]
+
+Deleted Containers:
+86cc27b94b25f6db91913529a83509a081dbab42068ddf01632f2c057b580afd
+e1742343cd03a65814f0eb02c0f46939a7833f43e022ef2d8ff1a53a43d507ba
+0149bbb9245680a29d232e4384143d3df74773923d4a675f24b46a36d123c1c1
+2c92b2f677a186fe8904b14e13c477afba37be69546ab93cd65f47b431e97d9f
+70fa76640036427e866eccfa5b38be13750510e4495c8657939eda8e79c5cf76
+8d6d6b3fe23996edb7572ece76a01aeffd194c8a2fa5fc080c1fd66fa7fcd65f
+b4b8324082c5a39e8841ef0250775addc104b1ab0446df9ee6606186ac5088e0
+c37f0e1557a0140b2a66223cffab4bd92bf7c18708e6c3307e603d255c904658
+
+Total reclaimed space: 32.77kB
+
+========== 명 령 어 ==========
+$ sudo docker system prune
+
+========== 입 력 결 과 ==========
+WARNING! This will remove:
+  - all stopped containers
+  - all networks not used by at least one container
+  - all dangling images
+  - unused build cache
+
+Are you sure you want to continue? [y/N] 
+
+Deleted build cache objects:
+ti3cptdcrn9af6lrt5t6fvhhs
+
+Total reclaimed space: 4.096kB
+
+========== 명 령 어 ==========
+$ sudo docker ps -a
+
+========== 입 력 결 과 ==========
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+========== 명 령 어 ==========
+$ sudo docker run hello-world
+
+========== 입 력 결 과 ==========
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+
+========== 명 령 어 ==========
+$ sudo docker ps -a
+
+========== 입 력 결 과 ==========
+CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                     PORTS     NAMES
+899773cad6b8   hello-world   "/hello"   3 minutes ago   Exited (0) 3 minutes ago             reverent_ramanujan
+
+========== 명 령 어 ==========
+$ sudo docker logs 899773cad6b8
+
+========== 입 력 결 과 ==========
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+
+========== 명 령 어 ==========
+$ sudo docker logs reverent_ramanujan
+
+========== 입 력 결 과 ==========
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+========== 명 령 어 ==========
+$ sudo docker inspect 899773cad6b8
+
+========== 입 력 결 과 ==========
+[
+    {
+        "Id": "899773cad6b8d54789c9fa3125014b3ec3fd8cfaf197e8961e9b0937ad6efa02",
+        "Created": "2026-07-29T05:57:24.344729216Z",
+        "Path": "/hello",
+        "Args": [],
+        "State": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-07-29T05:57:24.456449301Z",
+            "FinishedAt": "2026-07-29T05:57:24.621031898Z"
+        },
+        "Image": "sha256:c3cbe1cc1aa588a64951ac6286e0df7b27fe2e6324b1001c619bb358770c0178",
+        "ResolvConfPath": "/var/lib/docker/containers/899773cad6b8d54789c9fa3125014b3ec3fd8cfaf197e8961e9b0937ad6efa02/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/899773cad6b8d54789c9fa3125014b3ec3fd8cfaf197e8961e9b0937ad6efa02/hostname",
+        "HostsPath": "/var/lib/docker/containers/899773cad6b8d54789c9fa3125014b3ec3fd8cfaf197e8961e9b0937ad6efa02/hosts",
+        "LogPath": "/var/lib/docker/containers/899773cad6b8d54789c9fa3125014b3ec3fd8cfaf197e8961e9b0937ad6efa02/899773cad6b8d54789c9fa3125014b3ec3fd8cfaf197e8961e9b0937ad6efa02-json.log",
+        "Name": "/reverent_ramanujan",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "899773cad6b8",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": [
+                "/hello"
+            ],
+            "Image": "hello-world",
+            "Volumes": null,
+            "WorkingDir": "/",
+            "Entrypoint": null,
+            "Labels": {}
+        },
+        "NetworkSettings": {
+            "SandboxID": "",
+            "SandboxKey": "",
+            "Ports": {},
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "ef272bf11983a9a8c12772357eb175a45fdfe987f9396d03c09872a15b57edb8",
+                    "EndpointID": "",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "MacAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:d1a8d0a4eeb63aff09f5f34d4d80505e0ba81905f36158cc3970d8e07179e59e",
+            "size": 1023,
+            "annotations": {
+                "com.docker.official-images.bashbrew.arch": "amd64",
+                "org.opencontainers.image.base.name": "scratch",
+                "org.opencontainers.image.created": "2026-03-23T21:33:57Z",
+                "org.opencontainers.image.revision": "0b0efba82b82ace81ab2fb42d25116f9488e6cb4",
+                "org.opencontainers.image.source": "https://github.com/docker-library/hello-world.git#0b0efba82b82ace81ab2fb42d25116f9488e6cb4:amd64",
+                "org.opencontainers.image.url": "https://hub.docker.com/_/hello-world",
+                "org.opencontainers.image.version": "linux"
+            },
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]
+
+========== 명 령 어 ==========
+sudo docker stats 899773cad6b8
+
+========== 입 력 결 과 ==========
+### docker stats 입력으로 아래와 같은 출력을 txt 파일로 만들지 못합니다.
+### docker inspector 를 사용하라고 했습니다.
+### 아래 결과는 복사 붙여넣기 결과입니다.
+
+CONTAINER ID   NAME                 CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK I/O   PIDS
+899773cad6b8   reverent_ramanujan   0.00%     0B / 0B             0.00%     0B / 0B   0B / 0B     0
+
+
