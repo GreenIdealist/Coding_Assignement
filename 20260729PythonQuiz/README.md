@@ -53,4 +53,5 @@ QuizGame.py
 
 git
 -------
-[로그]()
+[수행 로그 01](./log,image/GitLog01.md)
+[수행 로그 02](./log,image/GitLog02.md)
