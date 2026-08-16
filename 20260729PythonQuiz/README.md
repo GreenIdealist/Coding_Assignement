@@ -20,6 +20,9 @@ Python을 이용한 프로그램을 만들어 보고, Python의 기본 문법을
 > 해당 main.py까지 갑니다. 해당 위치에서 python main.py를 입력해 출력합니다.
 
 기능 목록(퀴즈 풀기/추가/목록/점수)
+
+* Python 3.10 이상에서 동작
+* 외부 라이브러리 없이 표준 라이브러리만 사용
 ----------
 Quiz.py
 > 객체 '생성자' 메서드
@@ -27,7 +30,9 @@ Quiz.py
 > 퀴즈 파일 딕셔너리로 변환
 
 QuizGame.py에서 Quiz class를 import해서 사용하는 부분
+
 <img src="./log,image/QuizGameInQuizClass01.png" width="557" alt="QuizClassInQuizClass">
+
 <img src="./log,image/QuizGameInQuizClass02.png" width="557" alt="QuizClassInQuizClass">
 
 |메서드명|유형|역할 및 설명|
@@ -50,9 +55,16 @@ QuizGame.py
 |퀴즈 목록, 최고 점수 조회|show_quiz_list, show_best_score|등록된 퀴즈 제목 목록과 역대 최고 점수 기록을 확인합니다|
 |메뉴|Menu|메뉴를 보여줍니다.|
 
+* 예외 사항 처리
+```
+* 공백, 빈 입력, 범위 밖 숫자 입력, 숫자외 문자열 같은 입력 처리 완료
+* Ctrl + C 입력 스트림 종료 처리 완료
+* quiz.json 파일이 없으면 생성
+```
 
 git
 -------
 [수행 로그 01](./log,image/GitLog01.md)
 
 [수행 로그 02](./log,image/GitLog02.md)
+
