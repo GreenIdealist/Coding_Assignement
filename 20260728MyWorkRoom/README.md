@@ -40,8 +40,8 @@
 * 6.컨테이너 실행 실습 : [로그](log/log06.md)
 * 7.기존 Dockerfile 기반 커스텀 이미지 제작 : [로그](log/log07.md)
 * 8.포트 매핑 및 접속 증거 [로그](log/log08.md)
-* 9.Docker 볼륨 영속성 검증 [로그]()
-* 10.Git 설정 및 Github 연동
+* 9.Docker 볼륨 영속성 검증 [로그](log/log09.md)
+* 10.Git 설정 및 Github 연동 [로그](log/log10.md)
 
 ### 3.검증 방법 및 수행 로그(입력, 출력결과)
 > DockerLog.txt 파일 참고
