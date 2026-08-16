@@ -13,6 +13,9 @@ class Quiz:
         }
 
     # 딕셔너리를 다시 Quiz 객체로 변환 (클래스 메서드 활용)
+    ### 현재 객체가 없는 상태라서 딕셔너리 데이터일 뿐, Quiz 객체가 아닙니다.
+    ### @classmethod를 붙이면, 이 매서드는 개별 객체가 아니라 클래스 자체와 연결됩니다.
+    ###즉 객체가 없어도 Quiz.from_dict(data) 형태로 클래스 이름을 통해 곧바로 호출 가능합니다.
     @classmethod
     def from_dict(cls, data):
         return cls(data["question"], data["choices"], data["answer"])
@@ -27,5 +30,6 @@ class Quiz:
     def check_answer(self, user_answer):
         try:
             return int(user_answer) == self.answer
+        ###오류가 있으면 False를 전달
         except ValueError:
             return False
