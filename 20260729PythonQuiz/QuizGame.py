@@ -54,6 +54,8 @@ class QuizGame:
                 ##### C, java 같은 경우 블록 스코프가 있어 범위를 벗어나면 사라집니다.
                 ##### 함수 단위로 공간을 나누기 때문에, if를 빠져 나온다고 사라지지 않습니다.
                 ###
+
+                ###리스트 컴프리핸션 : quiz_list를 받아와서 dict파일로 바꾼다음. 배열에 하나씩 넣는다.
                 self.quizzes = [Quiz.from_dict(q) for q in quiz_list]
         ### 위의 try를 받는 except
         except json.JSONDecodeError:
@@ -112,11 +114,11 @@ class QuizGame:
     def add_quiz(self):
         question = input("\n새로운 퀴즈의 문제를 입력하세요: ")
         ###문자는 string으로 받습니다.
-        choices = []
+        QuestionText = []
         ###문제는 총 5문제입니다.
         for i in range(5):
-            choice = input(f"선택지 {i+1}번을 입력하세요: ")
-            choices.append(choice)
+            num01 = input(f"선택지 {i+1}번을 입력하세요: ")
+            QuestionText.append(num01)
 
         while True:
             try:
@@ -130,7 +132,7 @@ class QuizGame:
                 print("숫자를 입력해주세요.")
 
         ###입력된 값들을 이용해서 Quiz 객체를 만듭니다.
-        new_quiz = Quiz(question, choices, answer)
+        new_quiz = Quiz(question, QuestionText, answer)
         ###퀴즈를 추가합니다.
         self.quizzes.append(new_quiz)
         ###퀴즈를 저장합니다.
@@ -165,17 +167,17 @@ class QuizGame:
                 print("5. 프로그램 종료")
                 print("="*20)
 
-                choice = input("메뉴를 선택하세요: ")
+                num = input("메뉴를 선택하세요: ")
 
-                if choice == '1':
+                if num == '1':
                     self.play_quiz()
-                elif choice == '2':
+                elif num == '2':
                     self.add_quiz()
-                elif choice == '3':
+                elif num == '3':
                     self.show_quiz_list()
-                elif choice == '4':
+                elif num == '4':
                     self.show_best_score()
-                elif choice == '5':
+                elif num == '5':
                     print("게임을 정상적으로 종료합니다. 수고하셨습니다!")
                     break
                 else:
