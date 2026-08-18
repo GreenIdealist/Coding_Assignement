@@ -83,3 +83,9 @@
 ### 10. Git 설정 및 GitHub VSCode 연동 증거
 * Git 사용자 정보, 기본 브렌치 설정 후, VSCode에서 GitHun 로그인 및 저장소 연동 완료
 
+### 11. 절대 경로, 상대 경로 설정하기
+* 절대 경로
+  > 예시 : C:\Users\Username\Documents\report.txt [절대 경로 : 어디 위치에서 사용가능]
+* 상대 경로
+  > 예시 : .\Users\Username\Documents\report.txt [실행 파일 기준 파일 위치를 찾아 사용]
+  
