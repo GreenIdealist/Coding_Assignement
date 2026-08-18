@@ -85,7 +85,38 @@
 
 ### 11. 절대 경로, 상대 경로 설정하기
 * 절대 경로
+
   > 예시 : C:\Users\Username\Documents\report.txt [절대 경로 : 어디 위치에서 사용가능]
+
 * 상대 경로
+
   > 예시 : .\Users\Username\Documents\report.txt [실행 파일 기준 파일 위치를 찾아 사용]
-  
+
+* 준비
+
+$ ls
+
+> docker-compose.yml  html
+
+$ mkdir test001
+
+> docker-compose.yml  html  test001
+
+$ cd test001
+
+$ pwd
+
+> /home/grayliar/Downloads/test001
+
+$ cd ..
+
+상대 경로
+
+> $ cd ./test001
+
+절대 경로
+
+> cd "/home/grayliar/Downloads/test001"
+
+절대 경로와 상대 경로의 결과는 같습니다.
+표현 방법이 다를뿐입니다.
