@@ -87,7 +87,18 @@
                 "킹킹"
             ],
             "answer": 2
+        },
+        {
+            "question": "1223",
+            "choices": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            ],
+            "answer": 1
         }
     ],
-    "best_score": 1
+    "best_score": 3
 }
