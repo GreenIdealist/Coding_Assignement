@@ -125,7 +125,7 @@ class QuizGame:
                 answer = int(input("정답 번호(1~5)를 입력하세요: "))
                 if 1 <= answer <= 5:
                     break
-                print("1에서 4 사이의 숫자를 입력해주세요.")
+                print("1에서 5 사이의 숫자를 입력해주세요.")
             ###isdisit() 함수를 통해 이용하는 방법도 있지만,
             ###try except가 복잡하게 만들 필요가 없습니다.
             except ValueError:
